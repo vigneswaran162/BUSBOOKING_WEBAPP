@@ -1,0 +1,100 @@
+.navbar-brand{
+    background-color: #ED7D2B !important;
+    border-radius: 5px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    padding:  10px ;
+}
+.btn{
+    font-size: 15px !important;
+}
+small{
+    font-size: 10px;
+}
+
+.badge{
+    background-color: #ED7D2B !important;
+    color: #fff !important;
+}
+
+span{
+font-weight: 500 !important;
+}
+h5{
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    color:#ED7D2B !important;
+}
+h5 span{
+     font-weight: 600 !important;
+    text-transform: uppercase;
+    color: #233862 !important;
+}
+
+.btn-2{
+    background-color: #233862 !important;
+    border: none !important;
+    padding: 12px 20px !important;
+    border-radius:20px !important;
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+
+
+.side-modal {
+  position: fixed;
+  top: 0;
+  right: -100%; 
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: left 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+.side-modal.show {
+  right: 0; 
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.close{
+    background-color: transparent !important;
+    border: none !important;
+}
+.close i{
+    font-size: 20px;
+    background-color: #233862 !important;
+    padding: 10px !important;
+    border-radius: 40px !important;
+    color: #ED7D2B !important;
+}
+h4{
+    color: #ED7D2B !important;
+    line-height: 5px !important;
+}
+h4 span{
+    color: #233862 !important;
+}
+
+h6{
+    font-weight: 400 !important;
+}
+h6 span{
+    color: #233862 !important;
+    font-weight: 500 !important;
+}
+.btn-3{
+    border: none !important;
+    background-color: #233862 !important;
+    color: #fff !important;
+    padding: 10px !important;
+    font-weight: 600;
+    letter-spacing: 1px !important;
+}

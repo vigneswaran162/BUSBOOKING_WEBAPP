@@ -1,0 +1,25 @@
+.navbar{
+    background-color: #233862!important;
+    font-weight: 500 !important;
+    color: #fff !important;
+}
+.navbar a{
+     /* color: #ED7D2B !important; */
+     color: #fff;
+}
+.btn-1{
+    background-color: #233862 !important;
+    color: #fff !important;
+    padding: 10px 15px;
+    border: none !important;
+    border-radius: 10px !important;
+    letter-spacing: 2px !important;
+}
+.btn-2{
+    background-color: #ED7D2B !important;
+    color: #fff !important;
+    padding: 10px 15px;
+    border: none !important;
+    border-radius: 10px !important;
+    letter-spacing: 2px !important;
+}

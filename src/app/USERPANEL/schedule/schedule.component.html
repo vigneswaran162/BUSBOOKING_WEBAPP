@@ -1,0 +1,102 @@
+<nav class="navbar navbar-light bg-light mb-3 px-5 py-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Schedule</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Schedule Id</label>
+                        <input type="text" [(ngModel)]="model.ScheduleID" class="form-control"
+                            id="exampleFormControlInput1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputGroupSelect03" class="form-label">Vendor Id</label>
+                        <select class="form-select" id="inputGroupSelect03" [(ngModel)]="model.VendorID">
+
+                            @for (option of VendorDetails; track option.VendorID) {
+                            <option [value]="option.VendorID"> {{ option.VendorName }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput12" class="form-label">Bus Name</label>
+                        <input type="text" [(ngModel)]="model.BusName" class="form-control"
+                            id="exampleFormControlInput12">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput11" class="form-label">Bus Vechicle No</label>
+                        <input type="text" [(ngModel)]="model.BusVehicleNo" class="form-control"
+                            id="exampleFormControlInput11">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput10" class="form-label">Total Seats</label>
+                        <input type="text" [(ngModel)]="model.TotalSeats" class="form-control"
+                            id="exampleFormControlInput10">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput7" class="form-label">Available Seats</label>
+                        <input type="text" class="form-control"  [(ngModel)]="model.AvailableSeats" id="exampleFormControlInput7">
+                    </div>
+
+
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="inputGroupSelect01" class="form-label">From Location</label>
+
+                        <select [(ngModel)]="model.FromLocation" class="form-select" id="inputGroupSelect01">
+
+                            @for (option of LocationDetails; track option.LocationCode) {
+                            <option [value]="option.LocationCode">{{ option.LocationName }}</option>
+                            }
+                        </select>
+
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputGroupSelect02" class="form-label">To Location</label>
+                        <select [(ngModel)]="model.ToLocation" class="form-select" id="inputGroupSelect02">
+
+                            @for (option of LocationDetails; track option.LocationCode) {
+                            <option [value]="option.LocationCode">{{ option.LocationName }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">Schedule Date</label>
+                        <input type="date" [(ngModel)]="model.ScheduleDate" class="form-control"
+                            id="exampleFormControlInput2" [min]="currentDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">Depature Time</label>
+                        <input type="time" [(ngModel)]="model.DepartureTime" class="form-control"
+                            id="exampleFormControlInput2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">Arrival Time</label>
+                        <input type="time" [(ngModel)]="model.ArrivalTime" class="form-control"
+                            id="exampleFormControlInput2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">Price</label>
+                        <input type="text" [(ngModel)]="model.Price" class="form-control" id="exampleFormControlInput2">
+                    </div>
+
+
+                  
+                </div>
+
+                <div class="co-md-8  d-flex align-items-center justify-content-end px-5">
+                        <button class="btn-1 mx-2">CLEAR</button> <button (click)="OnSubmit()" class="btn-2">SUBMIT</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

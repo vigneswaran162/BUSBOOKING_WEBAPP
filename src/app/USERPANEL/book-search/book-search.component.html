@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light  p-3 fixed-top shadow " style="background-color: #233862;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="fa-solid fa-bus mx-2"></i> Orange Bus</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto px-5">
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class="dropdownlink dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-regular fa-user"></i> Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="margin-top: 120px;">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-10 p-3 shadow" *ngFor="let item of BookSearchDet">
+          <div class="row">
+            <div class="col-md-3">
+                <h5>{{ item.BusName }}</h5>
+                <span><img width="32" height="32" src="https://img.icons8.com/doodle/48/air-conditioner.png" alt="air-conditioner"/> AC Seater</span>
+            </div>
+            <div class="col-md-2">
+                <h6 class="text-muted">Departure Time</h6>
+                <span><img width="32" height="32" src="https://img.icons8.com/bubbles/100/time-machine.png" alt="time-machine"/>{{ item.DepartureTime }}</span>
+            </div>
+            <div class="col-md-2">
+                <h6 class="text-muted">Arrival Time</h6>
+                <span><img width="32" height="32" src="https://img.icons8.com/bubbles/100/clock.png" alt="clock"/>{{ item.ArrivalTime }}</span>
+            </div>
+            <div class="col-md-1">
+                <h6 class="text-muted">Price</h6>
+                <span><img width="32" height="32" src="https://img.icons8.com/clouds/100/cash--v2.png" alt="cash--v2"/> {{ item.Price }}</span>
+            </div>
+         
+             <div class="col-md-2">
+                <h6 class="text-muted">Duration</h6>
+                <span><img width="32" height="32" src="https://img.icons8.com/external-coco-line-kalash/32/external-express-untact-economy-coco-line-kalash.png" alt="external-express-untact-economy-coco-line-kalash"/>  7 hrs</span>
+            </div>
+             <div class="col-md-2">
+               <button (click)="BusDetails(item)">View Seats</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

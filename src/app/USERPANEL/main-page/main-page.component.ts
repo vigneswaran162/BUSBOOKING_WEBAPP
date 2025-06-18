@@ -1,0 +1,58 @@
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { BusBookingService } from '../../services/bus-booking.service';
+import { formatDate, isPlatformBrowser } from '@angular/common';
+import { BooKsearch } from '../../Model/BusBookingModel';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+
+
+@Component({
+  selector: 'app-main-page',
+  imports: [FormsModule],
+  templateUrl: './main-page.component.html',
+  styleUrl: './main-page.component.css'
+})
+export class MainPageComponent implements OnInit {
+
+
+  LocationDetails: any;
+  currentDate: any;
+  model: BooKsearch;
+
+  constructor(private service: BusBookingService, private router:Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
+  async ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.model = new BooKsearch()
+      const today = new Date();
+      this.currentDate = formatDate(today, 'yyyy-MM-dd', 'en-US');
+      this.model.DepartureDate = this.currentDate;
+      // this.currentDate = this.datePipe.transform(today, 'yyyy-MM-dd') || '';
+      await this.GetLocationDetails();
+    }
+  }
+
+  async GetLocationDetails() {
+    let resp: any = await this.service.GetLocationDetails().catch(err => {
+      alert(err.message);
+    });
+    if (resp != undefined) {
+      if (resp.Boolval == true) {
+        this.LocationDetails = resp.data;
+      } else {
+        alert(resp.retrunerror);
+      }
+    }
+  } 
+
+  SearchBus(){
+this.router.navigate([
+  'BusSearch',
+  this.model.FromPlace,
+  this.model.Toplace,
+  this.model.DepartureDate
+]);
+  }
+}
