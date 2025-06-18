@@ -8,10 +8,11 @@ import { firstValueFrom } from 'rxjs';
 })
 export class BusBookingService {
  
+  private apiurl:string = 'http://localhost:8000/'
 
   constructor(private http: HttpClient) {}
 
-  private baseUrl: string = 'http://localhost:8000/';
+  private baseUrl: string = 'https://backendvercel-brown.vercel.app/';
 
   async GetLocationDetails() {
     const url = this.baseUrl + 'GetLocationDetails';
