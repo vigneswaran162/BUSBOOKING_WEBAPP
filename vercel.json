@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/BusSearch/:FromPlace/:Toplace/:BookingDate",
-      "destination": "/"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
