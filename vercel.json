@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/BusSearch/:FromPlace/:Toplace/:BookingDate",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
