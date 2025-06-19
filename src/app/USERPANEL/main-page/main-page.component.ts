@@ -41,6 +41,8 @@ export class MainPageComponent implements OnInit {
     if (resp != undefined) {
       if (resp.Boolval == true) {
         this.LocationDetails = resp.data;
+        this.model.FromPlace = resp.data[0].LocationCode;
+        this.model.Toplace = resp.data[1].LocationCode;
       } else {
         alert(resp.retrunerror);
       }

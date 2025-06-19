@@ -61,3 +61,32 @@ label{
     letter-spacing: 1px !important;
     color: #fff !important;
 }
+
+
+
+@media (max-width: 576px) {
+    label{
+         font-size: 13px;
+    }
+    input,select{
+       font-size: 15px;
+    }
+    .col-sm-6{
+        margin-bottom: 20px !important;
+    }
+    .button{
+    width: 100%;
+    padding: 10px 8px;
+    border: none !important;
+    background-color: #ED7D2B !important;
+    border-radius: 30px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    letter-spacing: 1px !important;
+    font-size: 15px;
+
+}
+.navbar-brand,i{
+    font-size: 15px !important;
+}
+}
