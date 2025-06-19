@@ -29,32 +29,80 @@
 <div class="container" style="margin-top: 120px;">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-10 p-3 shadow" *ngFor="let item of BookSearchDet">
-          <div class="row">
-            <div class="col-md-3">
+<div class="row align-items-center">
+  <div class="col-12 col-md-3">
+    <h5>{{ item.BusName }}</h5>
+    <span>
+      <img width="32" height="32" src="https://img.icons8.com/doodle/48/air-conditioner.png" alt="air-conditioner"/>
+      AC Seater
+    </span>
+  </div>
+
+  <div class="col-6 col-md-2">
+    <h6 class="text-muted">Departure Time</h6>
+    <span>
+      <img width="32" height="32" src="https://img.icons8.com/bubbles/100/time-machine.png" alt="time-machine"/>
+      {{ item.DepartureTime }}
+    </span>
+  </div>
+
+  <div class="col-6 col-md-2">
+    <h6 class="text-muted">Arrival Time</h6>
+    <span>
+      <img width="32" height="32" src="https://img.icons8.com/bubbles/100/clock.png" alt="clock"/>
+      {{ item.ArrivalTime }}
+    </span>
+  </div>
+
+  <div class="col-6 col-md-1">
+    <h6 class="text-muted">Price</h6>
+    <span>
+      <img width="32" height="32" src="https://img.icons8.com/clouds/100/cash--v2.png" alt="cash--v2"/>
+      {{ item.Price }}
+    </span>
+  </div>
+
+  <div class="col-6 col-md-2">
+    <h6 class="text-muted">Duration</h6>
+    <span>
+      <img width="32" height="32" src="https://img.icons8.com/external-coco-line-kalash/32/external-express-untact-economy-coco-line-kalash.png" alt="duration"/>
+      7 hrs
+    </span>
+  </div>
+
+  <div class="col-12 col-md-2 text-md-end">
+    <button class="btn btn-warning mt-2 mt-md-0" (click)="BusDetails(item)">View Seats</button>
+  </div>
+</div>
+
+
+
+          <!-- <div class="row">
+            <div class="col-md-3 col-xs-4">
                 <h5>{{ item.BusName }}</h5>
                 <span><img width="32" height="32" src="https://img.icons8.com/doodle/48/air-conditioner.png" alt="air-conditioner"/> AC Seater</span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-xs-4">
                 <h6 class="text-muted">Departure Time</h6>
                 <span><img width="32" height="32" src="https://img.icons8.com/bubbles/100/time-machine.png" alt="time-machine"/>{{ item.DepartureTime }}</span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-xs-4">
                 <h6 class="text-muted">Arrival Time</h6>
                 <span><img width="32" height="32" src="https://img.icons8.com/bubbles/100/clock.png" alt="clock"/>{{ item.ArrivalTime }}</span>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 col-xs-4">
                 <h6 class="text-muted">Price</h6>
                 <span><img width="32" height="32" src="https://img.icons8.com/clouds/100/cash--v2.png" alt="cash--v2"/> {{ item.Price }}</span>
             </div>
          
-             <div class="col-md-2">
+             <div class="col-md-2 col-xs-4">
                 <h6 class="text-muted">Duration</h6>
                 <span><img width="32" height="32" src="https://img.icons8.com/external-coco-line-kalash/32/external-express-untact-economy-coco-line-kalash.png" alt="external-express-untact-economy-coco-line-kalash"/>  7 hrs</span>
             </div>
-             <div class="col-md-2">
+             <div class="col-md-2 col-xs-4">
                <button (click)="BusDetails(item)">View Seats</button>
             </div>
-          </div>
+          </div> -->
         </div>
     </div>
 </div>

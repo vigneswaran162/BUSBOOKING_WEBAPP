@@ -33,32 +33,22 @@
           <div class="col-md-10 p-3 shadow searchbar ">
             <div class="row">
               <div class="col-md-3   col-sm-6">
-                <!-- <div class="input-box">
-                        <i class="fa-solid fa-road"></i>
-                        <input type="text" placeholder="leaving From"  class="input">
-                     </div> -->
-                <div class="input-group mb-3">
-                  <label class="input-group-text" for="inputGroupSelect01"><i class="fa-solid fa-road"></i></label>
-                  <select class="form-select" [(ngModel)]="model.FromPlace" id="inputGroupSelect01">
-
-                    <option selected>Leaving Form</option>
+               <div class="input-box1">
+                  <label for="inputGroupSelect01" class="form-label">From Place</label>
+                <select class="form-select" [(ngModel)]="model.FromPlace" id="inputGroupSelect01">
                     @for (option of LocationDetails; track option.LocationCode) {
                     <option [value]="option.LocationCode">{{ option.LocationName }}</option>
                     }
                   </select>
                 </div>
               </div>
-              <div class="col-md-3 search-box col-sm-6">
-
-                <div class="input-group mb-3">
-                  <label class="input-group-text" for="inputGroupSelect02"><i
-                      class="fa-solid fa-location-dot"></i></label>
+              <div class="col-md-3 col-sm-6">
+               <div class="input-box1">
+                  <label for="inputGroupSelect02" class="form-label">To Place</label>
                   <select class="form-select" [(ngModel)]="model.Toplace" id="inputGroupSelect02">
-                    <option selected>Going To</option>
                     @for (option of LocationDetails; track option.LocationCode) {
                     <option [value]="option.LocationCode">{{ option.LocationName }}</option>
                     }
-
                   </select>
                 </div>
               </div>

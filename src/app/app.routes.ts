@@ -21,8 +21,5 @@ export const routes: Routes = [
     {
         path:'BusDetails/:id',
         component:BusDetailsComponent
-    },
-    {
-      
     }
 ];

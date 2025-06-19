@@ -48,7 +48,7 @@ async GetScheduleID(paramMap: any){
       this.model.bookingId ='BK-001'
        for(let i=0; i< this.BusDet.AvailableSeats;i++){
         let obj ={
-          seatNo:i+1 +'-S',
+          seatNo:i+1 +'S',
           selected:false,
           Price:this.BusDet.Price
         }
