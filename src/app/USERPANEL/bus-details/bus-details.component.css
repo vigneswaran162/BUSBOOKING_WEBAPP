@@ -193,10 +193,14 @@ line-height: 4px !important;
     font-size: 15px !important;
 }
 .cont-bus span{
-    font-size: 13px !important;
+    font-size: 10px !important;
 }
 .booking-summary h6 span{
     color: #ED7D2B !important;
+    font-size: 14px !important;
+}
+.booking-summary h6 {
+    font-size: 14px !important;
 }
 
 .btn-3{
@@ -207,6 +211,14 @@ line-height: 4px !important;
     font-weight: 600;
     font-size: 14px !important;
     letter-spacing: 1px !important;
+}
+
+.close i{
+    font-size: 15px;
+    background-color: #233862 !important;
+    padding: 5px !important;
+    border-radius: 30px !important;
+    color: #ED7D2B !important;
 }
 
 }
