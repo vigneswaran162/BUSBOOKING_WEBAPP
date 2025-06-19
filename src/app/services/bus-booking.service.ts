@@ -33,6 +33,10 @@ export class BusBookingService {
     return await firstValueFrom(this.http.get(url));
   }
 
+   async GetBookedSeats(ScheduleID: string) {
+    const url = this.baseUrl + 'GetBookedSeats?ScheduleID='+ScheduleID;
+    return await firstValueFrom(this.http.get(url));
+  }
 
 
   

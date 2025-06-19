@@ -18,18 +18,20 @@ model:Booking;
 busBookingPassengers: any;
 isModalOpen:boolean =false;
   totalAmount: any;
+  Bookedseats: any;
 
 constructor(private route:ActivatedRoute ,private service:BusBookingService){
 
 
 }
 
-ngOnInit(){
+async ngOnInit(){
    const paramMap = this.route.snapshot.paramMap.get('id');
    if(paramMap){
   this.model = new Booking();
-  this.busBookingPassengers=[];
-  this.GetScheduleID(paramMap);
+   this.busBookingPassengers=[];
+  await this.GetScheduleID(paramMap);
+  await this.GetBookedSeats(paramMap)
 
  }
 }
@@ -50,7 +52,8 @@ async GetScheduleID(paramMap: any){
         let obj ={
           seatNo:i+1 +'S',
           selected:false,
-          Price:this.BusDet.Price
+          Price:this.BusDet.Price,
+          SeatBooked:false,
         }
         this.PassengerDet.push(obj);
       }    
@@ -60,6 +63,25 @@ async GetScheduleID(paramMap: any){
    }
 }
 
+async GetBookedSeats(paramMap: any){
+   let response:any = await this.service.GetBookedSeats(paramMap).catch(err =>{
+    alert(err.message)
+   })
+   if(response != undefined){
+     if(response.Boolval){
+      this.Bookedseats = response.data[0].seatNumbers;
+      this.PassengerDet.forEach(seat => {
+  if (this.Bookedseats.includes(seat.seatNo)) {
+    seat.SeatBooked = true;
+  }
+});
+    
+     
+     }else{
+      alert(response.returnerror)
+     }
+   }
+}
 
 
 AddRow(seat:any,i:number){

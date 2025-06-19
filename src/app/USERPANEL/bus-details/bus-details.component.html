@@ -12,7 +12,7 @@
             <div class="row">
 
                 <div class="col-3" *ngFor="let seat of PassengerDet;let i = index;">
-                    <button  (click)="AddRow(seat,i)" class="seat-btn"  [ngClass]="{
+                    <button  [disabled]="seat.SeatBooked" (click)="AddRow(seat,i)" class="seat-btn"  [ngClass]="{
         'btn-outline-success': !seat.selected,
         'btn-success': seat.selected
       }" (click)="seat.selected = !seat.selected">
