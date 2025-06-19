@@ -113,7 +113,7 @@ h6 span{
     font-size: 13px !important;
     border-radius: 5px !important;
 }
-.btn-success{
+.seat-selected{
     color: #fff !important;
     background-color: #ED7D2B !important;
     border: 1px solid #ED7D2B  !important;
@@ -122,11 +122,27 @@ h6 span{
 
 }
 
-.btn-outline-success{
+.seat-available{
         color: #233862 !important;
     border: 1px solid #233862 !important;
 }
+.seat-booked{
+        border: 1px solid rgb(176, 176, 176) !important;
+        background-color: rgb(174, 174, 174) !important;
+        color: rgb(33, 33, 33) !important;
 
+}
+.square1{
+            color: rgb(174, 174, 174) !important;
+
+}
+.square2{
+            color:#233862 !important;
+
+}
+.status{
+    font-size: 8px !important;
+}
 
 @media (max-width: 576px) {
 .side-modal {

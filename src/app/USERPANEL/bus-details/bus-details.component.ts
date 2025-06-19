@@ -188,6 +188,8 @@ async onSubmit(){
       if (resp != undefined) {
         if (resp.Boolval) {
           alert('Sucessfully Created')
+          this.model = new Booking()
+          this.isModalOpen =false;
         } else {
           alert(resp.returnerror)
         }
