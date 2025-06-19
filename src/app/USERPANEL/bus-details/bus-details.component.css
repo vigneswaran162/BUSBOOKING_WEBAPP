@@ -26,6 +26,9 @@ h5{
     text-transform: uppercase;
     color:#ED7D2B !important;
 }
+h5 img{
+    margin: 5px !important;
+}
 h5 span{
      font-weight: 600 !important;
     text-transform: uppercase;
@@ -62,6 +65,7 @@ h5 span{
 
 .modal-content {
   padding: 20px;
+  margin-top: 100px !important;
 }
 
 .close{
@@ -168,4 +172,41 @@ h6{
     color: #233862 !important;
     font-weight: 600 !important;
 }
+h4{
+font-size: 16px !important;
+font-weight: 600 !important;
+line-height: 4px !important;
+}
+h4 span{
+font-size: 16px !important;
+font-weight: 600 !important;
+line-height: 4px !important;
+
+}
+.text-muted{
+    font-size: 10px !important;
+}
+.form-label{
+    font-size: 12px !important;
+}
+.form-control{
+    font-size: 15px !important;
+}
+.cont-bus span{
+    font-size: 13px !important;
+}
+.booking-summary h6 span{
+    color: #ED7D2B !important;
+}
+
+.btn-3{
+    border: none !important;
+    background-color: #233862 !important;
+    color: #fff !important;
+    padding: 8px !important;
+    font-weight: 600;
+    font-size: 14px !important;
+    letter-spacing: 1px !important;
+}
+
 }
