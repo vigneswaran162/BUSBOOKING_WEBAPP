@@ -55,6 +55,8 @@ label{
     border-radius: 5px !important;
     font-weight: 500 !important;
     color: #fff !important;
+    font-size: 15px !important;
+    padding:  10px ;
 }
 .dropdownlink{
     text-decoration: none !important;
