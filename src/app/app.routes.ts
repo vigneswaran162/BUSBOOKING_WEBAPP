@@ -17,8 +17,12 @@ export const routes: Routes = [
         path:'BusSearch/:FromPlace/:Toplace/:BookingDate',
         component:BookSearchComponent
     },
+
     {
         path:'BusDetails/:id',
         component:BusDetailsComponent
+    },
+    {
+      
     }
 ];
