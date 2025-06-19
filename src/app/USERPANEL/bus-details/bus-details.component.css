@@ -84,7 +84,8 @@ h4 span{
 }
 
 h6{
-    font-weight: 400 !important;
+    color: #233862 !important;
+    font-weight: 600 !important;
 }
 h6 span{
     color: #233862 !important;
@@ -149,6 +150,22 @@ h6 span{
     letter-spacing: 2px !important;
     font-size: 14px !important;
 }
+h5{
+    font-size: 18px !important;
+}
+h5 img{
+    height: 28px !important;
+    width: 28px !important;
+    margin: 5px !important;
+}
 
-
+.bus-details span img{
+    height: 25px !important;
+    width: 25px !important;
+    margin: 5px !important;
+}
+h6{
+    color: #233862 !important;
+    font-weight: 600 !important;
+}
 }
