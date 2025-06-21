@@ -11,7 +11,7 @@ declare var Razorpay: any;
 
 @Component({
   selector: 'app-bus-details',
-  imports: [NgFor, NgClass, DatePipe, FormsModule,NgIf,ToastrModule],
+  imports: [NgFor, NgClass, DatePipe, FormsModule, NgIf, ToastrModule],
   templateUrl: './bus-details.component.html',
   styleUrl: './bus-details.component.css'
 })
@@ -25,7 +25,7 @@ export class BusDetailsComponent implements OnInit {
   Bookedseats: any;
   Isloading: boolean = false;
 
-  constructor(private route: ActivatedRoute, private service: BusBookingService,private Toast:ToastNotificationService) {
+  constructor(private route: ActivatedRoute, private service: BusBookingService, private Toast: ToastNotificationService) {
 
 
   }
@@ -44,7 +44,7 @@ export class BusDetailsComponent implements OnInit {
 
 
   async GetScheduleID(paramMap: any) {
-    this.Isloading =true;
+    this.Isloading = true;
     let response: any = await this.service.GetScheduleID(paramMap).catch(err => {
       alert(err.message)
     })
@@ -63,17 +63,17 @@ export class BusDetailsComponent implements OnInit {
             SeatBooked: false,
           }
           this.PassengerDet.push(obj);
-              this.Isloading =false;
+          this.Isloading = false;
         }
       } else {
         alert(response.returnerror)
-            this.Isloading =false;
+        this.Isloading = false;
       }
     }
   }
 
   async GetBookedSeats(paramMap: any) {
-        this.Isloading =true;
+    this.Isloading = true;
     let response: any = await this.service.GetBookedSeats(paramMap).catch(err => {
       alert(err.message)
     })
@@ -85,12 +85,12 @@ export class BusDetailsComponent implements OnInit {
             seat.SeatBooked = true;
           }
         });
-    this.Isloading =false;
+        this.Isloading = false;
 
 
       } else {
         alert(response.returnerror);
-          this.Isloading =false;
+        this.Isloading = false;
       }
     }
   }
@@ -127,7 +127,7 @@ export class BusDetailsComponent implements OnInit {
   toggleModal() {
     if (this.busBookingPassengers.length == 0) {
       // alert('Please Select Seat');
-      this.Toast.showWarning('Please Select a Seat','Orange Bus')
+      this.Toast.showWarning('Please Select a Seat', 'Orange Bus')
       return false;
     }
 
@@ -135,15 +135,15 @@ export class BusDetailsComponent implements OnInit {
       for (let i = 0; i < this.busBookingPassengers.length; i++) {
         const passenger = this.busBookingPassengers[i];
         if (!passenger.passengerName) {
-          this.Toast.showWarning('Please Enter Passenger Name','Orange Bus')
+          this.Toast.showWarning('Please Enter Passenger Name', 'Orange Bus')
           return false;
         }
         if (!passenger.age) {
-                this.Toast.showWarning('Please Enter Age','Orange Bus')
+          this.Toast.showWarning('Please Enter Age', 'Orange Bus')
           return false;
         }
         if (!passenger.gender) {
-                this.Toast.showWarning('Please Select Gender','Orange Bus')
+          this.Toast.showWarning('Please Select Gender', 'Orange Bus')
           return false;
         }
       }
@@ -182,11 +182,11 @@ export class BusDetailsComponent implements OnInit {
 
   formvalidation() {
     if (this.model.EmailAddress == " " || this.model.EmailAddress == undefined || this.model.EmailAddress == null) {
-      this.Toast.showWarning('Email Address Cannot be Blank','Orange Bus')
+      this.Toast.showWarning('Email Address Cannot be Blank', 'Orange Bus')
       return false
     }
     if (this.model.PhoneNo == " " || this.model.PhoneNo == undefined || this.model.PhoneNo == null) {
-      this.Toast.showWarning('Phone No  Cannot be Blank','Orange Bus')
+      this.Toast.showWarning('Phone No  Cannot be Blank', 'Orange Bus')
       return false
     }
     return true
@@ -240,6 +240,25 @@ export class BusDetailsComponent implements OnInit {
       const rzp = new Razorpay(options);
       rzp.open();
     });
+  }
+
+  onblurEmailAddress(event: any) {
+    if (!event.target.validity.valid) {
+      this.model.EmailAddress = "";
+      this.Toast.showWarning('Invalid Email Address', '');
+
+    }
+  }
+
+  onBlurPassengerName(event: any, i: any) {
+    if (!event.target.validity.valid) {
+      this.busBookingPassengers[i].passengerName = ''
+    }
+  }
+  onBlurPassengerPhone(event: any, i: any) {
+        if (!event.target.validity.valid) {
+    this.busBookingPassengers[i].age = ''
+        }
   }
 }
 
