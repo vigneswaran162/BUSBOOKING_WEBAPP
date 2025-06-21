@@ -73,15 +73,18 @@
                             </h5>
                             <div class="row" *ngFor="let item of busBookingPassengers;let i = index;">
                                 <div class="col-md-4 mb-3">
-                                    <input type="text" class="form-control" [(ngModel)]="item.passengerName"
-                                        placeholder="Passenger Name">
+                                    <label for="" class="label">Passenger Name</label>
+                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="item.passengerName"
+                                       >
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <input type="text" class="form-control" [(ngModel)]="item.age"
-                                        placeholder="Passenger Age">
+                                   <label for=""  class="label">Age</label>
+                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="item.age"
+                                       >
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <select class="form-select" [(ngModel)]="item.gender">
+                                    <label for="" class="label">Gender</label>
+                                    <select class="form-select form-select-sm" [(ngModel)]="item.gender">
                                         <option selected>Select Gender</option>
                                         <option value="male">male</option>
                                         <option value="female">female</option>
@@ -94,6 +97,7 @@
                     </div>
                     <div class=" w-100 d-flex align-items-center justify-content-center">
                         <button class="my-4 btn-2" (click)="toggleModal()">Contine Booking</button>
+                        <button (click)="payNow()">payNow</button>
                     </div>
                 </div>
             </div>
@@ -160,4 +164,9 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="loading-overlay" *ngIf="Isloading">
+   <img src="../assets/bus.gif" alt="">
 </div>
