@@ -39,6 +39,11 @@ export class BusBookingService {
   }
 
 
+   createOrder(amount: number) {
+        const url = this.baseUrl + 'createOrder';
+    return this.http.post(url, { amount });
+  }
+
   
   async CreateSchedule(Entity: any) {
   const url = this.baseUrl + 'Schedule';

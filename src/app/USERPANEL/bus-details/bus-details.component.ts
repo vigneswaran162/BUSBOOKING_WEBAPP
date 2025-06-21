@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BusBookingService } from '../../services/bus-booking.service';
 import { Booking } from '../../Model/BusBookingModel';
 import { FormsModule } from '@angular/forms';
+declare var Razorpay: any;
 
 @Component({
   selector: 'app-bus-details',
@@ -187,9 +188,11 @@ async onSubmit(){
       })
       if (resp != undefined) {
         if (resp.Boolval) {
-          alert('Sucessfully Created')
-          this.model = new Booking()
-          this.isModalOpen =false;
+
+          this.payNow()
+          // alert('Sucessfully Created')
+          // this.model = new Booking()
+          // this.isModalOpen =false;
         } else {
           alert(resp.returnerror)
         }
@@ -197,7 +200,39 @@ async onSubmit(){
   }
 }
 
+
+
+  payNow() {
+    const amount = 5; // ₹500
+
+    this.service.createOrder(amount).subscribe((order: any) => {
+      const options = {
+        key: 'rzp_test_AApuZR0yWRvZ5T', 
+        amount: order.amount,
+        currency: order.currency,
+        name: 'ORANGE BUS',
+        description: 'Test Transaction',
+        order_id: order.id,
+        handler: function (response: any) {
+          alert('Payment successful. Razorpay Payment ID: ' + response.razorpay_payment_id);
+        },
+        prefill: {
+          name: 'Vigneswaran',
+          email: 'vigneswaran@example.com',
+          contact: '9000090000',
+        },
+        theme: {
+          color: '#3399cc',
+        }
+      };
+      const rzp = new Razorpay(options);
+      rzp.open();
+    });
+  }
 }
+
+
+
 
 
  
