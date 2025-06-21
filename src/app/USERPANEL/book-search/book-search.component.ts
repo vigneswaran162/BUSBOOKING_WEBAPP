@@ -14,6 +14,7 @@ param:any
 BookSearchDet: any;
 PassengerDet:any[]=[]
 Isloading:boolean = false;
+IsShow:boolean =false;
   constructor(private service:BusBookingService,private router:Router,
     private route:ActivatedRoute
   ){}
@@ -39,8 +40,16 @@ async BusBookSearch(fromPlace: string,toPlace: string,departureDate: string){
    })
    if(response != undefined){
      if(response.Boolval){
+      this.Isloading = false;
+      
+      if(response.data.length>0){
       this.BookSearchDet = response.data;
-       this.Isloading = false;
+      this.IsShow=false;
+      }else{
+      this.IsShow =true;
+      }
+
+     
      }else{
       alert(response.returnerror)
       this.Isloading = false;

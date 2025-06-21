@@ -4,6 +4,8 @@ import { formatDate, isPlatformBrowser } from '@angular/common';
 import { BooKsearch } from '../../Model/BusBookingModel';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastNotificationService } from '../../services/toast-notification.service';
+
 
 
 
@@ -20,7 +22,7 @@ export class MainPageComponent implements OnInit {
   currentDate: any;
   model: BooKsearch;
 
-  constructor(private service: BusBookingService, private router:Router,
+  constructor(private service: BusBookingService, private router:Router,private Toast:ToastNotificationService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
   async ngOnInit() {
@@ -49,12 +51,36 @@ export class MainPageComponent implements OnInit {
     }
   } 
 
+  formvalidation(){
+       if (this.model.FromPlace == " " || this.model.FromPlace == undefined || this.model.FromPlace == null) {
+      this.Toast.showWarning('From Place Cannot be Blank', 'Orange Bus')
+      return false
+    }
+    if (this.model.Toplace == " " || this.model.Toplace == undefined || this.model.Toplace == null) {
+      this.Toast.showWarning('To place  Cannot be Blank', 'Orange Bus')
+      return false
+    }
+    if (this.model.DepartureDate == " " || this.model.DepartureDate == undefined || this.model.DepartureDate == null) {
+      this.Toast.showWarning('Departure Date  Cannot be Blank', 'Orange Bus')
+      return false
+    }
+     if (this.model.FromPlace ==  this.model.Toplace) {
+      this.Toast.showWarning('From Place and Toplace cannot be Same', 'Orange Bus')
+      return false
+    }
+    return true
+  }
+
+
+
   SearchBus(){
-this.router.navigate([
+   if(this.formvalidation()){
+    this.router.navigate([
   'BusSearch',
   this.model.FromPlace,
   this.model.Toplace,
   this.model.DepartureDate
 ]);
+   }
   }
 }

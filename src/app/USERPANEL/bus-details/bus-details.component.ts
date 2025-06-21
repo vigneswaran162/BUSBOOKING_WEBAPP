@@ -194,17 +194,18 @@ export class BusDetailsComponent implements OnInit {
 
   async onSubmit() {
     if (this.formvalidation()) {
+      this.isModalOpen = true;
       const editmod = this.preparemodel();
       let resp: any = await this.service.CreateBooking(editmod).catch(err => {
         alert(err.message)
       })
       if (resp != undefined) {
         if (resp.Boolval) {
-
+        this.isModalOpen = false;
           this.payNow()
           // alert('Sucessfully Created')
-          // this.model = new Booking()
-          // this.isModalOpen =false;
+          this.model = new Booking()
+          this.isModalOpen =false;
         } else {
           alert(resp.returnerror)
         }

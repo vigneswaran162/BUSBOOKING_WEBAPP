@@ -62,3 +62,12 @@ span{
     z-index: 5 !important;
   
   }
+  .img{
+    width: 300px !important;
+  }
+  h4 span{
+    color: #ED7D2B;
+  }
+   h4 {
+    color: #233862;
+  }
