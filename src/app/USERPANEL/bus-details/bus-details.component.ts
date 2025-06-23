@@ -79,12 +79,14 @@ export class BusDetailsComponent implements OnInit {
     })
     if (response != undefined) {
       if (response.Boolval) {
-        this.Bookedseats = response.data[0].seatNumbers;
+         if(response.data.length>0){
+           this.Bookedseats = response.data[0].seatNumbers;
         this.PassengerDet.forEach(seat => {
           if (this.Bookedseats.includes(seat.seatNo)) {
             seat.SeatBooked = true;
           }
         });
+         }
         this.Isloading = false;
 
 

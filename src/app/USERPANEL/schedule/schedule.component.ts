@@ -79,7 +79,7 @@ export class ScheduleComponent implements OnInit {
     })
     if (resp != undefined) {
       if (resp.Boolval) {
-        this.model = new ISchedule();
+        // this.model = new ISchedule();
         alert('Sucessfully Created')
       } else {
         alert(resp.returnerror)
