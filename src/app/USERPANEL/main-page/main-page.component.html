@@ -1,48 +1,67 @@
-<nav class="navbar navbar-expand-lg navbar-light  p-3 fixed-top shadow " style="background-color: #233862;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa-solid fa-bus mx-3"></i> Orange Bus</a>
-  </div>
-</nav>
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 bg-img">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-10 p-3 shadow searchbar ">
-            <div class="row">
-              <div class="col-md-3   col-sm-6">
-               <div class="input-box1">
-                  <label for="inputGroupSelect01" class="form-label">From Place</label>
-                <select class="form-select" [(ngModel)]="model.FromPlace" id="inputGroupSelect01">
-                    @for (option of LocationDetails; track option.LocationCode) {
-                    <option [value]="option.LocationCode">{{ option.LocationName }}</option>
-                    }
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-               <div class="input-box1">
-                  <label for="inputGroupSelect02" class="form-label">To Place</label>
-                  <select class="form-select" [(ngModel)]="model.Toplace" id="inputGroupSelect02">
-                    @for (option of LocationDetails; track option.LocationCode) {
-                    <option [value]="option.LocationCode">{{ option.LocationName }}</option>
-                    }
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3  col-sm-6">
-                <div class="input-box1">
-                  <label for="exampleFormControlInput1" class="form-label">Departure date</label>
-                  <input type="date" [(ngModel)]="model.DepartureDate" [min]="currentDate" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-              </div>
-              <div class="col-md-3 search-box  col-sm-6">
-                <button class="button" (click)="SearchBus()">SEARCH BUSES</button>
-              </div>
-            </div>
+<header class="ob-nav">
+  <a class="ob-brand" href="/"><span class="ob-logo"><i class="fa-solid fa-bus"></i></span><span>Orange <b>Bus</b></span></a>
+  <div class="ob-nav-tag"><i class="fa-solid fa-shield-halved"></i> Safe · Comfortable · On time</div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <span class="orb orb-1"></span><span class="orb orb-2"></span>
+    <i class="fa-solid fa-location-dot deco d1 ob-float"></i>
+    <i class="fa-solid fa-ticket deco d2 ob-float"></i>
+    <i class="fa-solid fa-route deco d3 ob-float"></i>
+    <div class="ob-wrap hero-text">
+      <p class="eyebrow ob-reveal"><i class="fa-solid fa-star"></i> Trusted by thousands of travellers</p>
+      <h1 class="ob-reveal" style="--d:.08s">Book your bus tickets <span>in seconds</span></h1>
+      <p class="sub ob-reveal" style="--d:.16s">Pick your route, choose your seat and travel in comfort.</p>
+    </div>
+  </section>
+
+  <!-- Search card -->
+  <section class="ob-wrap search-wrap">
+    <div class="searchbar ob-card ob-reveal" style="--d:.22s">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="input-box1 ob-field has-icon">
+            <label for="inputGroupSelect01" class="ob-label">From Place</label>
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <select class="ob-input" [(ngModel)]="model.FromPlace" id="inputGroupSelect01">
+              @for (option of LocationDetails; track option.LocationCode) {
+              <option [value]="option.LocationCode">{{ option.LocationName }}</option>
+              }
+            </select>
           </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="input-box1 ob-field has-icon">
+            <label for="inputGroupSelect02" class="ob-label">To Place</label>
+            <i class="fa-solid fa-location-dot"></i>
+            <select class="ob-input" [(ngModel)]="model.Toplace" id="inputGroupSelect02">
+              @for (option of LocationDetails; track option.LocationCode) {
+              <option [value]="option.LocationCode">{{ option.LocationName }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="input-box1 ob-field has-icon">
+            <label for="exampleFormControlInput1" class="ob-label">Departure date</label>
+            <i class="fa-solid fa-calendar-days"></i>
+            <input type="date" [(ngModel)]="model.DepartureDate" [min]="currentDate" class="ob-input" id="exampleFormControlInput1">
+          </div>
+        </div>
+        <div class="col-md-3 search-box col-sm-6">
+          <button class="ob-btn block button" (click)="SearchBus()"><i class="fa-solid fa-magnifying-glass"></i> SEARCH BUSES</button>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Features -->
+  <section class="ob-wrap features">
+    <div class="feature ob-reveal ob-hover-wiggle" style="--d:.3s"><i class="fa-solid fa-shield-heart"></i><div><b>Safe travel</b><span>Verified operators</span></div></div>
+    <div class="feature ob-reveal ob-hover-wiggle" style="--d:.38s"><i class="fa-solid fa-indian-rupee-sign"></i><div><b>Best prices</b><span>No hidden charges</span></div></div>
+    <div class="feature ob-reveal ob-hover-wiggle" style="--d:.46s"><i class="fa-solid fa-chair"></i><div><b>Choose your seat</b><span>Live seat map</span></div></div>
+    <div class="feature ob-reveal ob-hover-wiggle" style="--d:.54s"><i class="fa-solid fa-headset"></i><div><b>24x7 support</b><span>Always here to help</span></div></div>
+  </section>
+</main>

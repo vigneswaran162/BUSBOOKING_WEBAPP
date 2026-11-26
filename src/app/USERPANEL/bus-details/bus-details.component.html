@@ -1,113 +1,100 @@
-<nav class="navbar navbar-expand-lg navbar-light  p-3 fixed-top shadow " style="background-color: #233862;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-bus mx-2"></i> Orange Bus</a>
-      
-        
-    </div>
-</nav>
-<div class="container" style="margin-top: 100px;">
-    <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md-4 col-sm-12 p-3 card mb-3" style="min-height: 60vh;">
-            <div class="w-100 d-flex align-items-center justify-content-between">
-            <h5><img width="32" height="32" src="https://img.icons8.com/external-goofy-color-kerismaker/96/external-Bus-travel-tourism-goofy-color-kerismaker.png" alt="external-Bus-travel-tourism-goofy-color-kerismaker"/>  <span>Book Your</span> Seats</h5>
-            <div class="d-flex align-items-center justify-content-end flex-column">
-                <span class="status"><i class="fa-solid fa-square square1"></i> Seat Booked</span>
-                <span class="status"><i class="fa-solid fa-square square2"></i> Seat Available</span>
+<header class="ob-nav">
+    <a class="ob-brand" href="/"><span class="ob-logo"><i class="fa-solid fa-bus"></i></span><span>Orange <b>Bus</b></span></a>
+    <div class="ob-nav-tag"><i class="fa-solid fa-chair"></i> Pick your seats</div>
+</header>
 
+<main class="ob-wrap page">
+    <ol class="ob-steps">
+        <li class="done"><span><i class="fa-solid fa-check"></i></span> Search</li>
+        <li class="done"><span><i class="fa-solid fa-check"></i></span> Select bus</li>
+        <li class="active"><span>3</span> Seats</li>
+        <li><span>4</span> Pay</li>
+    </ol>
+
+    <div class="layout">
+        <!-- Seat map -->
+        <section class="seat-card ob-card ob-reveal">
+            <div class="seat-head">
+                <h3 class="ob-title"><i class="fa-solid fa-chair"></i> Book your <em>seats</em></h3>
+                <div class="legend">
+                    <span class="status"><i class="fa-solid fa-square square1"></i> Booked</span>
+                    <span class="status"><i class="fa-regular fa-square square2"></i> Available</span>
+                    <span class="status"><i class="fa-solid fa-square square3"></i> Selected</span>
+                </div>
             </div>
 
-            </div>
-            <div class="row">
-
-                <div class="col-3" *ngFor="let seat of PassengerDet;let i = index;">
-                    <button  [disabled]="seat.SeatBooked" (click)="AddRow(seat,i)" class="seat-btn"  [ngClass]="{
+            <div class="bus-body">
+                <div class="bus-front"><i class="fa-solid fa-circle-dot"></i><small>Driver</small></div>
+                <div class="seat-grid">
+                    <div class="seat-cell" *ngFor="let seat of PassengerDet;let i = index;">
+                        <button [disabled]="seat.SeatBooked" (click)="AddRow(seat,i)" class="seat-btn" [ngClass]="{
        'seat-selected': seat.selected && !seat.SeatBooked,
       'seat-available': !seat.selected && !seat.SeatBooked,
       'seat-booked': seat.SeatBooked
       }" (click)="seat.selected = !seat.selected">
-                        {{ seat.seatNo }}
-                    </button>
-
-                </div>
-            </div>
-
-
-        </div>
-        <div class="col-md-6 p-2" style="min-height: 60vh;">
-            <div class="row">
-                <h5 class="mb-3"><img width="32" height="32" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-bus-vacation-planning-solo-trip-flaticons-flat-flat-icons.png" alt="external-bus-vacation-planning-solo-trip-flaticons-flat-flat-icons"/>
-                                <span>bus</span> Details
-                            </h5>
-                <div class="col-md-12 bus-details d-flex align-items-center justify-content-between w-100 mb-3">
-                    <div>
-                        <span><img width="32" height="32" src="https://img.icons8.com/doodle/48/bus--v1.png"
-                                alt="bus--v1" /> {{BusDet.BusName}}</span> <br>
-                        <span><img width="32" height="32" src="https://img.icons8.com/doodle/48/calendar--v2.png"
-                                alt="calendar--v2" /> {{BusDet.ScheduleDate | date:'dd-MM-yyyy'}}</span>
-                    </div>
-                    <div>
-
-                        <span><img width="32" height="32" src="https://img.icons8.com/doodle/48/alarm-clock.png"
-                                alt="alarm-clock" /> DepartureTime: {{BusDet.DepartureTime}}</span> <br>
-                        <span><img width="32" height="32"
-                                src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/external-bus-stop-city-elements-flatart-icons-lineal-color-flatarticons.png"
-                                alt="external-bus-stop-city-elements-flatart-icons-lineal-color-flatarticons" />ArrivalTime:
-                            {{BusDet.ArrivalTime}}</span>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    
-                    <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <h6><img width="32" height="32"
-                                    src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/external-seat-airport-icongeek26-linear-colour-icongeek26.png"
-                                    alt="external-seat-airport-icongeek26-linear-colour-icongeek26" /> Selected Seats:
-                            </h6> <span *ngFor="let seat of busBookingPassengers;"
-                                class="mx-2 badge">{{seat.seatNo}}</span>
-                        </div>
-                        <div class="col-md-12">
-                            <h5 class="mb-3"><img width="32" height="32"
-                                    src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/external-passenger-airport-icongeek26-linear-colour-icongeek26.png"
-                                    alt="external-passenger-airport-icongeek26-linear-colour-icongeek26" />
-                                <span>Passenger</span> Details
-                            </h5>
-                            <div class="row" *ngFor="let item of busBookingPassengers;let i = index;">
-                                <div class="col-md-4 mb-3">
-                                    <label for="" class="label">Passenger Name</label>
-                                    <input type="text" pattern="^[a-zA-Z ]*$" (blur)="onBlurPassengerName($event,i)" maxlength="50" class="form-control form-control-sm" [(ngModel)]="item.passengerName"
-                                       >
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                   <label for=""  class="label">Age</label>
-                                    <input type="text" pattern="^[0-9]*$" minlength="1" (blur)="onBlurPassengerPhone($event,i)"   maxlength="2" class="form-control form-control-sm" [(ngModel)]="item.age"
-                                       >
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="" class="label">Gender</label>
-                                    <select class="form-select form-select-sm" [(ngModel)]="item.gender">
-                                        <option selected>Select Gender</option>
-                                        <option value="male">male</option>
-                                        <option value="female">female</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class=" w-100 d-flex align-items-center justify-content-center">
-                        <button class="my-4 btn-2" (click)="toggleModal()">Contine Booking</button>
-                        <!-- <button (click)="payNow()">payNow</button> -->
+                            {{ seat.seatNo }}
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
+        <!-- Trip + passengers -->
+        <section class="side">
+            <div class="trip ob-card ob-reveal" style="--d:.08s">
+                <h3 class="ob-title"><i class="fa-solid fa-route"></i> Bus <em>details</em></h3>
+                <div class="bus-details">
+                    <div class="tile ob-hover-wiggle"><i class="fa-solid fa-bus"></i><div><small>Bus</small><b>{{BusDet?.BusName}}</b></div></div>
+                    <div class="tile ob-hover-wiggle"><i class="fa-solid fa-calendar-days"></i><div><small>Date</small><b>{{BusDet?.ScheduleDate | date:'dd-MM-yyyy'}}</b></div></div>
+                    <div class="tile ob-hover-wiggle"><i class="fa-solid fa-clock"></i><div><small>Departure</small><b>{{BusDet?.DepartureTime}}</b></div></div>
+                    <div class="tile ob-hover-wiggle"><i class="fa-solid fa-flag-checkered"></i><div><small>Arrival</small><b>{{BusDet?.ArrivalTime}}</b></div></div>
+                </div>
+            </div>
+
+            <div class="ob-card ob-reveal" style="--d:.16s">
+                <h3 class="ob-title"><i class="fa-solid fa-ticket"></i> Selected <em>seats</em></h3>
+                <div class="picked">
+                    <span *ngFor="let seat of busBookingPassengers;" class="badge"><i class="fa-solid fa-chair"></i> {{seat.seatNo}}</span>
+                    <span class="hint" *ngIf="!busBookingPassengers?.length"><i class="fa-regular fa-hand-pointer"></i> Tap a seat on the map to begin</span>
+                </div>
+            </div>
+
+            <div class="ob-card ob-reveal" style="--d:.24s">
+                <h3 class="ob-title"><i class="fa-solid fa-users"></i> Passenger <em>details</em></h3>
+                <div class="pax" *ngFor="let item of busBookingPassengers;let i = index;">
+                    <div class="pax-head"><span class="pax-no">{{i + 1}}</span> Passenger {{i + 1}} <span class="pax-seat"><i class="fa-solid fa-chair"></i> {{item.seatNo}}</span></div>
+                    <div class="pax-grid">
+                        <div>
+                            <label for="" class="ob-label">Passenger Name</label>
+                            <input type="text" pattern="^[a-zA-Z ]*$" (blur)="onBlurPassengerName($event,i)" maxlength="50" class="ob-input sm" placeholder="Full name" [(ngModel)]="item.passengerName">
+                        </div>
+                        <div>
+                            <label for="" class="ob-label">Age</label>
+                            <input type="text" pattern="^[0-9]*$" minlength="1" (blur)="onBlurPassengerPhone($event,i)" maxlength="2" class="ob-input sm" placeholder="Age" [(ngModel)]="item.age">
+                        </div>
+                        <div>
+                            <label for="" class="ob-label">Gender</label>
+                            <select class="ob-input sm" [(ngModel)]="item.gender">
+                                <option selected>Select Gender</option>
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <p class="hint" *ngIf="!busBookingPassengers?.length"><i class="fa-regular fa-id-card"></i> Passenger forms appear once you pick a seat</p>
+            </div>
+
+            <div class="actions ob-reveal" style="--d:.3s">
+                <div class="count"><small>Seats selected</small><b>{{busBookingPassengers?.length || 0}}</b></div>
+                <button class="ob-btn navy btn-2" (click)="toggleModal()">Contine Booking <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section>
     </div>
-</div>
+</main>
 
-
-
+<!-- Contact / summary drawer -->
+<div class="ob-backdrop" [class.show]="isModalOpen" (click)="toggleModal()"></div>
 <div class="side-modal" [class.show]="isModalOpen">
     <div class="modal-content">
         <div class="row">
@@ -119,17 +106,19 @@
                             <h4><span>Contact</span> details</h4>
                             <span class="text-muted">Ticket details will be sent to</span>
                         </div>
-                        <button class="close" (click)="toggleModal()"><i class="fa-solid fa-xmark "></i></button>
+                        <button class="close" (click)="toggleModal()" aria-label="Close"><i class="fa-solid fa-xmark "></i></button>
                     </div>
 
 
-                    <div class="col-md-12 mb-2">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" required class="form-control" [(ngModel)]="model.EmailAddress" id="exampleFormControlInput1">
+                    <div class="col-md-12 mb-3 ob-field has-icon">
+                        <label for="exampleFormControlInput1" class="ob-label">Email address</label>
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" required class="ob-input" placeholder="name@example.com" [(ngModel)]="model.EmailAddress" id="exampleFormControlInput1">
                     </div>
-                    <div class="col-md-12 mb-2">
-                        <label for="exampleFormControlInput10" class="form-label">Phone No</label>
-                        <input type="text" required minlength="10" maxlength="10" pattern="^[0-9]*$" class="form-control" [(ngModel)]="model.PhoneNo" id="exampleFormControlInput10">
+                    <div class="col-md-12 mb-2 ob-field has-icon">
+                        <label for="exampleFormControlInput10" class="ob-label">Phone No</label>
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="text" required minlength="10" maxlength="10" pattern="^[0-9]*$" class="ob-input" placeholder="10-digit mobile number" [(ngModel)]="model.PhoneNo" id="exampleFormControlInput10">
                     </div>
                 </div>
             </div>
@@ -138,29 +127,25 @@
                     <div class="col-md-12">
                         <h4><span>Booking</span> Summary</h4>
                         <div>
-                            <div class="w-100 d-flex flex-wrap align-items-center justify-content-between mt-4 cont-bus">
-                                <span><i class="fa-solid fa-bus"></i> {{BusDet.BusName}}</span>
-                                <span><i class="fa-solid fa-calendar-days"></i> {{BusDet.ScheduleDate | date:'dd-MM-yyyy'}}</span>
-                                <span><i class="fa-solid fa-clock"></i> DepartureTime: {{BusDet.DepartureTime}}</span> <br>
+                            <div class="w-100 d-flex flex-wrap align-items-center justify-content-between mt-3 cont-bus">
+                                <span><i class="fa-solid fa-bus"></i> {{BusDet?.BusName}}</span>
+                                <span><i class="fa-solid fa-calendar-days"></i> {{BusDet?.ScheduleDate | date:'dd-MM-yyyy'}}</span>
+                                <span><i class="fa-solid fa-clock"></i> DepartureTime: {{BusDet?.DepartureTime}}</span> <br>
                                 <span><i class="fa-solid fa-clock"></i> ArrivalTime:
-                                    {{BusDet.ArrivalTime}}</span>
+                                    {{BusDet?.ArrivalTime}}</span>
                             </div>
                         </div>
-                        <div class="mt-4 booking-summary ">
-                            <h6 class="text-muted">Base Fare (per seat): <span>₹ {{BusDet.Price}}</span></h6>
-                            <h6 class="text-muted">Selected Seats: <span>{{busBookingPassengers.length}}</span></h6>
-                            <h6 class="text-muted">Fare Calculation:<span> ₹ {{BusDet.Price}} *
-                                    {{busBookingPassengers.length}}</span></h6>
-                            <h6 class="text-muted">Total Amount:<span> ₹ {{totalAmount}}</span></h6>
+                        <div class="mt-3 booking-summary ">
+                            <h6 class="text-muted">Base Fare (per seat): <span>₹ {{BusDet?.Price}}</span></h6>
+                            <h6 class="text-muted">Selected Seats: <span>{{busBookingPassengers?.length}}</span></h6>
+                            <h6 class="text-muted">Fare Calculation:<span> ₹ {{BusDet?.Price}} *
+                                    {{busBookingPassengers?.length}}</span></h6>
+                            <h6 class="text-muted total">Total Amount:<span> ₹ {{totalAmount}}</span></h6>
 
                         </div>
-                        <button class="w-100 btn-3 mt-3" (click)="onSubmit()">CONTINUE PAY ₹ {{totalAmount}} </button>
+                        <button class="ob-btn block btn-3 mt-3" (click)="onSubmit()"><i class="fa-solid fa-lock"></i> CONTINUE PAY ₹ {{totalAmount}} </button>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-
-
             </div>
         </div>
     </div>

@@ -9,3 +9,311 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+
+/* =====================================================================
+   Orange Bus – global design system
+   1 Tokens · 2 Base · 3 Header · 4 Stepper · 5 Cards · 6 Fields
+   7 Buttons · 8 Icon animations · 9 Page animations · 10 Toasts/Loader
+   ===================================================================== */
+
+/* 1. Tokens */
+:root {
+    --ob-orange: #f58220;
+    --ob-orange-dark: #d96a0a;
+    --ob-navy: #20365f;
+    --ob-navy-dark: #14243f;
+    --ob-bg: #f5f7fb;
+    --ob-white: #fff;
+    --ob-text: #202b3c;
+    --ob-muted: #64708a;
+    --ob-border: #e5eaf1;
+    --ob-success: #16a34a;
+    --ob-warning: #f59e0b;
+    --ob-danger: #dc2626;
+
+    --ob-radius-sm: 10px;
+    --ob-radius: 14px;
+    --ob-radius-lg: 22px;
+    --ob-shadow-sm: 0 2px 8px rgba(20, 36, 63, 0.06);
+    --ob-shadow: 0 10px 30px rgba(20, 36, 63, 0.1);
+    --ob-shadow-lg: 0 24px 50px rgba(20, 36, 63, 0.18);
+    --ob-grad: linear-gradient(135deg, #f58220, #e0690c);
+    --ob-grad-navy: linear-gradient(135deg, #20365f, #14243f);
+    --ob-ease: cubic-bezier(0.22, 0.8, 0.3, 1);
+    --ob-pad: clamp(16px, 4vw, 48px);
+}
+
+/* 2. Base */
+html { scroll-behavior: smooth; }
+body {
+    background: var(--ob-bg);
+    color: var(--ob-text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+:focus-visible {
+    outline: 3px solid rgba(245, 130, 32, 0.6);
+    outline-offset: 2px;
+}
+.ob-wrap {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 var(--ob-pad);
+}
+
+/* 3. Header */
+.ob-nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    padding: 0 var(--ob-pad);
+    background: var(--ob-grad-navy);
+    box-shadow: 0 6px 24px rgba(20, 36, 63, 0.3);
+}
+.ob-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: transform 0.25s var(--ob-ease);
+}
+.ob-brand:hover { color: #fff; transform: translateY(-1px); }
+.ob-brand b { color: var(--ob-orange); font-weight: 700; }
+.ob-logo {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    color: #fff;
+    background: var(--ob-grad);
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(245, 130, 32, 0.45);
+}
+.ob-logo i { font-size: 19px; animation: ob-drive 2.6s ease-in-out infinite; }
+.ob-nav-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    font-weight: 500;
+}
+.ob-nav-tag i { color: var(--ob-orange); }
+
+/* 4. Stepper */
+.ob-steps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 22px;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ob-muted);
+}
+.ob-steps li { display: flex; align-items: center; gap: 8px; }
+.ob-steps li::after {
+    content: '';
+    width: clamp(14px, 4vw, 40px);
+    height: 2px;
+    background: var(--ob-border);
+    border-radius: 2px;
+}
+.ob-steps li:last-child::after { display: none; }
+.ob-steps span {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+    background: #fff;
+    border: 2px solid var(--ob-border);
+    border-radius: 50%;
+}
+.ob-steps .done { color: var(--ob-success); }
+.ob-steps .done span { color: #fff; background: var(--ob-success); border-color: var(--ob-success); }
+.ob-steps .active { color: var(--ob-navy); }
+.ob-steps .active span {
+    color: #fff;
+    background: var(--ob-orange);
+    border-color: var(--ob-orange);
+    animation: ob-ring 2s infinite;
+}
+
+/* 5. Cards */
+.ob-card {
+    background: var(--ob-white);
+    border: 1px solid var(--ob-border);
+    border-radius: var(--ob-radius-lg);
+    box-shadow: var(--ob-shadow);
+}
+.ob-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    color: var(--ob-navy);
+    font-size: 17px;
+    font-weight: 700;
+}
+.ob-title i {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    color: var(--ob-orange);
+    font-size: 15px;
+    background: rgba(245, 130, 32, 0.12);
+    border-radius: 10px;
+}
+.ob-title em { color: var(--ob-orange); font-style: normal; }
+
+/* 6. Fields */
+.ob-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--ob-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+.ob-input {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 0 14px;
+    color: var(--ob-text);
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #fff;
+    border: 1.5px solid var(--ob-border);
+    border-radius: var(--ob-radius-sm);
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+select.ob-input {
+    padding-right: 40px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2320365f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+.ob-input:hover { border-color: #b4bed1; }
+.ob-input:focus {
+    outline: none;
+    border-color: var(--ob-orange);
+    box-shadow: 0 0 0 4px rgba(245, 130, 32, 0.2);
+}
+.ob-input.sm { height: 44px; }
+.ob-field { position: relative; }
+.ob-field > i {
+    position: absolute;
+    left: 15px;
+    bottom: 17px;
+    color: var(--ob-orange);
+    font-size: 15px;
+    pointer-events: none;
+}
+.ob-field.has-icon .ob-input { padding-left: 42px; }
+
+/* 7. Buttons */
+.ob-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 50px;
+    padding: 0 26px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-decoration: none;
+    background: var(--ob-grad);
+    border: 0;
+    border-radius: var(--ob-radius);
+    box-shadow: 0 8px 20px rgba(245, 130, 32, 0.38);
+    cursor: pointer;
+    transition: transform 0.25s var(--ob-ease), box-shadow 0.25s, filter 0.25s;
+}
+.ob-btn i { transition: transform 0.25s var(--ob-ease); }
+.ob-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(245, 130, 32, 0.45); filter: brightness(1.05); }
+.ob-btn:hover i { transform: translateX(4px); }
+.ob-btn:active { transform: scale(0.98); }
+.ob-btn.navy { background: var(--ob-grad-navy); box-shadow: 0 8px 20px rgba(20, 36, 63, 0.35); }
+.ob-btn.block { width: 100%; }
+.ob-btn.ghost {
+    color: var(--ob-navy);
+    background: #fff;
+    border: 1.5px solid var(--ob-border);
+    box-shadow: none;
+}
+
+/* 8. Icon animations */
+@keyframes ob-drive { 0%,100% { transform: translateX(-2px); } 50% { transform: translateX(2px) rotate(-3deg); } }
+@keyframes ob-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes ob-ring {
+    0% { box-shadow: 0 0 0 0 rgba(245, 130, 32, 0.5); }
+    70%,100% { box-shadow: 0 0 0 10px rgba(245, 130, 32, 0); }
+}
+@keyframes ob-wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
+@keyframes ob-pop { 0% { transform: scale(0.6); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.ob-float { animation: ob-float 3.2s ease-in-out infinite; }
+.ob-hover-wiggle:hover i,
+.ob-hover-wiggle:hover img { animation: ob-wiggle 0.5s ease; }
+
+/* 9. Page + reveal animations */
+@keyframes ob-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ob-fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ob-slide-in { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+app-root > *:not(router-outlet) { display: block; animation: ob-fade 0.4s ease both; }
+.ob-reveal { animation: ob-fade-up 0.55s var(--ob-ease) both; animation-delay: var(--d, 0s); }
+.ob-reveal-x { animation: ob-slide-in 0.55s var(--ob-ease) both; animation-delay: var(--d, 0s); }
+
+/* 10. Toasts + loader */
+.toast-container .ngx-toastr {
+    border-radius: 14px;
+    box-shadow: var(--ob-shadow-lg);
+    font-size: 14px;
+}
+.toast-success { background-color: var(--ob-success); }
+.toast-error { background-color: var(--ob-danger); }
+.toast-warning { background-color: var(--ob-warning); }
+.toast-info { background-color: var(--ob-navy); }
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fb;
+}
+
+@media (max-width: 575.98px) {
+    .ob-nav { height: 60px; }
+    .ob-nav-tag { display: none; }
+    .ob-brand { font-size: 18px; }
+    .ob-logo { width: 38px; height: 38px; }
+    .ob-steps { font-size: 12px; }
+    .ob-steps li:not(.active) { font-size: 0; }
+    .ob-steps li:not(.active) span { font-size: 12px; }
+    .ob-btn { height: 48px; }
+    .ob-input { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}

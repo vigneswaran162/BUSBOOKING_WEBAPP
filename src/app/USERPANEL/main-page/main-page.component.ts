@@ -20,7 +20,7 @@ export class MainPageComponent implements OnInit {
 
   LocationDetails: any;
   currentDate: any;
-  model: BooKsearch;
+  model: BooKsearch = new BooKsearch();
 
   constructor(private service: BusBookingService, private router:Router,private Toast:ToastNotificationService,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -43,8 +43,12 @@ export class MainPageComponent implements OnInit {
     if (resp != undefined) {
       if (resp.Boolval == true) {
         this.LocationDetails = resp.data;
-        this.model.FromPlace = resp.data[0].LocationCode;
-        this.model.Toplace = resp.data[1].LocationCode;
+        const findByName = (name: string) =>
+          resp.data.find((l: any) => (l.LocationName || '').trim().toLowerCase() === name);
+        const salem = findByName('salem');
+        const chennai = findByName('chennai');
+        this.model.FromPlace = (salem ?? resp.data[0]).LocationCode;
+        this.model.Toplace = (chennai ?? resp.data[1]).LocationCode;
       } else {
         alert(resp.retrunerror);
       }

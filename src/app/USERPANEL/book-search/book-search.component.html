@@ -1,68 +1,65 @@
-<nav class="navbar navbar-expand-lg navbar-light  p-3 fixed-top shadow " style="background-color: #233862;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa-solid fa-bus mx-2"></i> Orange Bus</a>
-  </div>
-</nav>
+<header class="ob-nav">
+  <a class="ob-brand" href="/"><span class="ob-logo"><i class="fa-solid fa-bus"></i></span><span>Orange <b>Bus</b></span></a>
+  <div class="ob-nav-tag"><i class="fa-solid fa-ticket"></i> Choose your ride</div>
+</header>
 
-<div class="container" style="margin-top: 120px;">
-    <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-md-10 d-flex align-items-center justify-content-center flex-column" *ngIf="IsShow">
-        <img src="../assets/Bus driver.gif" class="img-fluid img" alt="">
-        <h4>No <span>Orange</span> Bus is <span>Available</span>  at this  moment</h4>
-      </div>
-  <div class="col-md-10  card  p-3 shadow mb-3" *ngFor="let item of BookSearchDet">
-<div class="row align-items-center">
-  <div class="col-12 col-md-3">
-    <h5>{{ item.BusName }}</h5>
-    <span>
-      <img width="32" height="32" src="https://img.icons8.com/doodle/48/air-conditioner.png" alt="air-conditioner"/>
-      AC Seater
-    </span>
+<main class="ob-wrap page">
+  <ol class="ob-steps">
+    <li class="done"><span><i class="fa-solid fa-check"></i></span> Search</li>
+    <li class="active"><span>2</span> Select bus</li>
+    <li><span>3</span> Seats</li>
+    <li><span>4</span> Pay</li>
+  </ol>
+
+  <div class="head ob-reveal">
+    <h2><i class="fa-solid fa-bus-simple"></i> Available <em>buses</em></h2>
+    <span class="count" *ngIf="BookSearchDet">{{ BookSearchDet.length }} found</span>
   </div>
 
-  <div class="col-6 col-md-2">
-    <h6 class="text-muted">Departure Time</h6>
-    <span>
-      <img width="32" height="32" src="https://img.icons8.com/bubbles/100/time-machine.png" alt="time-machine"/>
-      {{ item.DepartureTime }}
-    </span>
-  </div>
-
-  <div class="col-6 col-md-2">
-    <h6 class="text-muted">Arrival Time</h6>
-    <span>
-      <img width="32" height="32" src="https://img.icons8.com/bubbles/100/clock.png" alt="clock"/>
-      {{ item.ArrivalTime }}
-    </span>
-  </div>
-
-  <div class="col-6 col-md-1">
-    <h6 class="text-muted">Price</h6>
-    <span>
-      <img width="32" height="32" src="https://img.icons8.com/clouds/100/cash--v2.png" alt="cash--v2"/>
-      {{ item.Price }}
-    </span>
-  </div>
-
-  <div class="col-6 col-md-2">
-    <h6 class="text-muted">Duration</h6>
-    <span>
-      <img width="32" height="32" src="https://img.icons8.com/external-coco-line-kalash/32/external-express-untact-economy-coco-line-kalash.png" alt="duration"/>
-      7 hrs
-    </span>
-  </div>
-
-  <div class="col-12 col-md-2 text-md-end">
-    <button class=" button mt-2 mt-md-0" (click)="BusDetails(item)">View Seats</button>
-  </div>
-</div>
-
-
-
-        </div>
+  <div class="empty ob-card ob-reveal" *ngIf="IsShow">
+    <div class="empty-art" aria-hidden="true">
+      <span class="ring r1"></span><span class="ring r2"></span>
+      <i class="fa-solid fa-magnifying-glass core"></i>
+      <i class="fa-solid fa-bus mini"></i>
     </div>
-</div>
+    <h4>No <span>Orange</span> Bus is <span>Available</span> at this moment</h4>
+    <p>We couldn't find a bus for this route and date.</p>
+    <ul class="tips">
+      <li><i class="fa-regular fa-calendar-check"></i> Try another travel date</li>
+      <li><i class="fa-solid fa-right-left"></i> Check the From and To places</li>
+      <li><i class="fa-solid fa-bus-simple"></i> Look at nearby routes</li>
+    </ul>
+    <a class="ob-btn navy" href="/"><i class="fa-solid fa-arrow-left"></i> Change search</a>
+  </div>
+
+  <article class="bus ob-card ob-reveal" *ngFor="let item of BookSearchDet; let i = index" [style.--d]="(i * 0.07) + 's'">
+    <div class="info">
+      <h5>{{ item.BusName }}</h5>
+      <span class="chip"><i class="fa-regular fa-snowflake"></i> AC Seater</span>
+    </div>
+
+    <div class="trip">
+      <div class="time">
+        <small>Departure</small>
+        <b>{{ item.DepartureTime }}</b>
+      </div>
+      <div class="route">
+        <small><i class="fa-regular fa-clock"></i> 7 hrs</small>
+        <div class="line"><i class="fa-solid fa-bus"></i></div>
+      </div>
+      <div class="time">
+        <small>Arrival</small>
+        <b>{{ item.ArrivalTime }}</b>
+      </div>
+    </div>
+
+    <div class="buy">
+      <div class="price"><small>Price</small><b><i class="fa-solid fa-indian-rupee-sign"></i>{{ item.Price }}</b></div>
+      <button class="ob-btn" (click)="BusDetails(item)"><i class="fa-solid fa-chair"></i> View Seats</button>
+    </div>
+  </article>
+</main>
 
 <div class="loading-overlay" *ngIf="Isloading">
-   <img src="../assets/bus.gif" alt="">
+  <img src="../assets/bus.gif" alt="">
 </div>

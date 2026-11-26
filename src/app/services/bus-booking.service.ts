@@ -12,7 +12,7 @@ export class BusBookingService {
 
   constructor(private http: HttpClient) {}
 
-  private baseUrl: string = 'https://backendvercel-brown.vercel.app/';
+  private baseUrl: string = 'https://apibackend-chi.vercel.app/';
 
   async GetLocationDetails() {
     const url = this.baseUrl + 'GetLocationDetails';
